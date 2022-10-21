@@ -2,10 +2,13 @@ package hu.petrik.matrixoop;
 
 import java.util.Random;
 
-public class Matrix {
+public  class Matrix {
     private int sor;
     private int oszlop;
     private int[][] m;
+
+
+
     private static final Random rnd = new Random();
 
     public Matrix(int sor, int oszlop) {
@@ -26,6 +29,9 @@ public class Matrix {
             }
         }
         return osszeg;
+    }
+    public int[][] getM() {
+        return m;
     }
     public int getPozitivElemekSzama () {
         int db = 0;
@@ -70,6 +76,25 @@ public class Matrix {
         }
         return new int[] {sorIndex, oszlopIndex};
     }
+    public int sorOsszeg(int sor) {
+        sor -= 1;
+        int sorOsszeg = 0;
+        for (int i = 0; i < this.m[sor].length; i++) {
+            sorOsszeg += this.m[sor][i];
+        }
+        return  sorOsszeg;
+    }
+    public int maxElemOszlop(int oszlop) {
+        oszlop -= 1;
+        int max = this.m[0][oszlop];
+        for (int i = 0; i < this.m.length; i++) {
+            if (max < this.m[i][oszlop]) {
+                max = this.m[i][oszlop];
+            }
+        }
+        return max;
+    }
+
      @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
